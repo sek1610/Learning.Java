@@ -8,7 +8,7 @@ public class Main {
         System.out.println("===================");
         System.out.println("Задание 1");
         System.out.println("Нечетные числа от 1 до 99:");
-        nechet t1 = new nechet();
+        NotDivide t1 = new NotDivide();
         t1.out();
         System.out.println("===================");
         System.out.println("Задание 2");
@@ -52,14 +52,11 @@ public class Main {
         System.out.println("Уникальное число: " + t10.OutNum(new int[]{}));
     }
 
-    public static class nechet {
+    public static class NotDivide {
         public void out() {
-            int[] ints = new int[100];
-            int[] ints1 = new int[50];
-            for (int i = 0; i < (ints.length - 1); i++) {
-                ints[i] = i + 1;
-                if (ints[i] % 2 == 1) {
-                    System.out.println(ints[i]);
+            for (int i = 1; i < 99; i++) {
+                if ((i) % 2 == 1) {
+                    System.out.println(i);
                 }
             }
         }
@@ -67,28 +64,24 @@ public class Main {
 
     public static class DivideElements {
         public void out() {
-            int[] ints = new int[100];
             System.out.println("Делятся на 3: ");
-            for (int i = 0; i < ints.length; i++) {
-                ints[i] = i + 1;
-                if (ints[i] % 3 == 0) {
-                    System.out.print(" " + ints[i]);
+            for (int i = 1; i < 101; i++) {
+                if (i % 3 == 0) {
+                    System.out.print(" " + i);
                 }
             }
             System.out.println("");
             System.out.println("Делятся на 5: ");
-            for (int i = 0; i < ints.length; i++) {
-                ints[i] = i + 1;
-                if (ints[i] % 5 == 0) {
-                System.out.print(" " + ints[i]);
+            for (int i = 0; i < 101; i++) {
+                if (i % 5 == 0) {
+                System.out.print(" " + i);
                 }
             }
             System.out.println("");
             System.out.println("Делятся на 15: ");
-            for (int i = 0; i < ints.length; i++) {
-                ints[i] = i + 1;
-                if (ints[i] % 15 == 0) {
-                    System.out.print(" " + ints[i]);
+            for (int i = 0; i < 101; i++) {
+                if (i % 15 == 0) {
+                    System.out.print(" " + i);
                 }
             }
             System.out.println("");
