@@ -1,37 +1,35 @@
-package labs;
-import java.util.Arrays;
-import java.util.Objects;
+package labs.lab5;
 import java.util.Scanner;
 
-public class lab5 {
-   public static void main(String[] args) {
+public class Main {
+    public static void main(String[] args) {
         System.out.println("Задание 1");
         maxword lab51 = new maxword();
-        System.out.println("Самое длинное слово: " + lab51.inf(new String()));
+        System.out.println("Самое длинное слово: " + lab51.OutWord(new String()));
         System.out.println("===================");
         System.out.println("Задание 2");
         palindrom lab52 = new palindrom();
-        System.out.println("Является ли слово палиндромом: " + lab52.inf(new String()));
+        System.out.println("Является ли слово палиндромом: " + lab52.OutResult(new String()));
         System.out.println("===================");
         System.out.println("Задание 3");
         censore lab53 = new censore();
-        System.out.println("Преобразованный текст: " +lab53.inf(new String()));
+        System.out.println("Преобразованный текст: " +lab53.OutText(new String(), "[вырезано цензурой]"));
         System.out.println("===================");
         System.out.println("Задание 4");
         repeatings lab54 = new repeatings();
-        System.out.println("Количество вхождений: " + lab54.inf(new String(), new String()));
+        System.out.println("Количество вхождений: " + lab54.OutResult(new String(), new String()));
         System.out.println("===================");
         System.out.println("Задание 5");
         reverse lab55 = new reverse();
-        System.out.println("Преобразованный текст: " + lab55.inf(new String()));
+        System.out.println("Преобразованный текст: " + lab55.OutText(new String()));
         System.out.println("===================");
 
     }
 
     public static class maxword {
-        public String inf(String text) {
-            text1 text1 = new text1();
-            text=text1.in();
+        public String OutWord(String text) {
+            Text text1 = new Text();
+            text=text1.Enter();
             int tl = text.length();
             int l = 0;
             int j = 0;
@@ -60,9 +58,9 @@ public class lab5 {
     }
 
     public static class palindrom {
-        public boolean inf(String text) {
-            word1 text1 = new word1();
-            text=text1.in();
+        public boolean OutResult(String text) {
+            Word text1 = new Word();
+            text=text1.Enter();
             text=text.toLowerCase();
             boolean res = true;
             int tl = text.length();
@@ -84,31 +82,22 @@ public class lab5 {
     }
 
     public static class censore {
-        public String inf(String text) {
-            text1 text1 = new text1();
-            text=text1.in();
-            String cens ="[вырезано цензурой]";
+        public String OutText(String text, String cens) {
+            Text text1 = new Text();
+            text=text1.Enter();
             int tl = text.length();
-            int l = 0;
-            char[] textchar = text.toCharArray();
-            while (l < tl-1)  {
-                if (textchar[l] =='б' && (textchar[l + 2] == 'к') && (textchar[l + 1] == 'я') && (textchar[l + 3] == 'а')) {;
-                    StringBuilder a1 = new StringBuilder(text);
-                    text = String.valueOf(a1.replace(l, l + 4, cens));
-                }
-                l=l+1;
-            }
+            text = text.replaceAll("бяка", cens);
             return text;
         }
     }
 
     public static class repeatings {
-        public int inf(String text1, String text2) {
-            text1 text = new text1();
-            text1=text.in();
+        public int OutResult(String text1, String text2) {
+            Text text = new Text();
+            text1=text.Enter();
             int tl1 = text1.length();
-            text1 text22 = new text1();
-            text2=text22.in();
+            Text text22 = new Text();
+            text2=text22.Enter();
             int tl2 = text2.length();
             int l = 0;
             int k = 0;
@@ -117,7 +106,7 @@ public class lab5 {
             char[] textchar2= text2.toCharArray();
             for (int i = 0; i < tl1-1; i++) {
                 if (textchar1[i] == textchar2[0]) {
-                    for (int j = 0; j < tl2; j++) {
+                    for (int j = 0; j < tl2-1; j++) {
                         if (textchar1[i+k] == textchar2[j]) {
                             l = (l + 1);
                             k = k + 1;
@@ -141,9 +130,10 @@ public class lab5 {
     }
 
     public static class reverse {
-        public String inf(String text) {
-            text1 text1 = new text1();
-            text=text1.in();
+        public String OutText(String text) {
+            Text text1 = new Text();
+            text=text1.Enter();
+            text = new StringBuilder(text).reverse().toString();
             int tl= text.length();
             int l = 0;
             int k = 0;
@@ -170,12 +160,12 @@ public class lab5 {
                 i=i+1;
             }
             String str = String.valueOf(textchar1);
-            return str.replaceAll("\\p{Cntrl}", "");
+            return text;
         }
     }
 
-    public static class text1 {
-        public String in() {
+    public static class Text {
+        public String Enter() {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Введите текст:");
             String text;
@@ -184,8 +174,8 @@ public class lab5 {
         }
     }
 
-    public static class word1 {
-        public String in() {
+    public static class Word {
+        public String Enter() {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Введите слово:");
             String word;
