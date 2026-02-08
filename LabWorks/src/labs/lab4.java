@@ -1,116 +1,102 @@
-package labs;
+package labs.lab4;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class lab4 {
-  public static void main(String[] args) {
+public class Main {
+    public static void main(String[] args) {
         System.out.println("Часть 1");
         System.out.println("===================");
         System.out.println("Задание 1");
         System.out.println("Нечетные числа от 1 до 99:");
         nechet t1 = new nechet();
-        System.out.println((Arrays.toString(t1.inf())));
+        t1.out();
         System.out.println("===================");
         System.out.println("Задание 2");
-        divide3515 t2 = new divide3515();
-        System.out.println("Делятся на 3: " + Arrays.toString(t2.divide3()));
-        System.out.println("Делятся на 5: " + Arrays.toString(t2.divide5()));
-        System.out.println("Делятся на 15: " + Arrays.toString(t2.divide15()));
+        DivideElements t2 = new DivideElements();
+        t2.out();
         System.out.println("===================");
         System.out.println("Задание 3");
-        xandyequalsz t3 = new xandyequalsz();
-        System.out.println("Сумма второго и первого числа равна третьему число?: " + t3.inf(1,1,1));
+        CheckEquality t3 = new CheckEquality();
+        System.out.println("Сумма второго и первого числа равна третьему число?: " + t3.OutResult(1,1,1));
         System.out.println("===================");
         System.out.println("Задание 4");
-        xlessylessz t4 = new xlessylessz();
-        System.out.println("Второе число больше первого числа, а третье число больше второго числа?: " + t4.inf(1,1,1));
+        CheckLess t4 = new CheckLess();
+        System.out.println("Второе число больше первого числа, а третье число больше второго числа?: " + t4.OutResult(1,1,1));
         System.out.println("===================");
         System.out.println("Задание 5");
-        hasmassive1or3on1orlast t5 = new hasmassive1or3on1orlast();
-        System.out.println("Присутствует на первом или последнем элементе массива 1 или 3?: " + t5.inf(new int[]{1, 1, 1}));
+        FindElements t5 = new FindElements();
+        System.out.println("Присутствует на первом или последнем элементе массива 1 или 3?: " + t5.OutResult(new int[]{1, 1, 1}));
         System.out.println("===================");
         System.out.println("Задание 6");
-        hasmassive1or3 t6 = new hasmassive1or3();
-        System.out.println("Присутствует ли в массиве 1 или 3?: " + t6.inf(new int[]{}));
+        ContainsMassiv t6 = new ContainsMassiv();
+        System.out.println("Присутствует ли в массиве 1 или 3?: " + t6.OutResult(new int[]{}));
         System.out.println("===================");
         System.out.println("===================");
         System.out.println("Часть 2");
         System.out.println("===================");
         System.out.println("Задание 1");
-        sortmassiv t7 = new sortmassiv();
-        t7.inf(new int[]{});
+        SortMassiv t7 = new SortMassiv();
+        t7.OutSort(new int[]{});
         System.out.println("===================");
         System.out.println("Задание 2");
-        entermassiv t8 = new entermassiv();
-        System.out.println("Result: " + Arrays.toString(t8.inf()));
+        EnterMassiv t8 = new EnterMassiv();
+        System.out.println("Result: " + Arrays.toString(t8.OutMassiv()));
         System.out.println("===================");
         System.out.println("Задание 3");
-        firstchangetolast t9 = new firstchangetolast();
+        ChangeElements t9 = new ChangeElements();
         System.out.println("Преобразованный массив");
-        System.out.println("Array2: " + Arrays.toString(t9.inf(new int[]{})));
+        System.out.println("Array2: " + Arrays.toString(t9.OutMassiv(new int[]{})));
         System.out.println("===================");
         System.out.println("Задание 4");
-        uniquenum t10 = new uniquenum();
-        System.out.println("Уникальное число: " + t10.inf(new int[]{}));
+        UniqueNum t10 = new UniqueNum();
+        System.out.println("Уникальное число: " + t10.OutNum(new int[]{}));
     }
 
     public static class nechet {
-        public int[] inf() {
+        public void out() {
             int[] ints = new int[100];
             int[] ints1 = new int[50];
-            int j = 0;
             for (int i = 0; i < (ints.length - 1); i++) {
                 ints[i] = i + 1;
                 if (ints[i] % 2 == 1) {
-                    ints1[j]=ints[i];
-                    j=j+1;
+                    System.out.println(ints[i]);
                 }
             }
-            return ints1;
         }
     }
 
-    public static class divide3515 {
-        public int[] divide3() {
+    public static class DivideElements {
+        public void out() {
             int[] ints = new int[100];
-            int j = 0;
-            int[] mod3 = new int[ints.length / 3];
+            System.out.println("Делятся на 3: ");
             for (int i = 0; i < ints.length; i++) {
                 ints[i] = i + 1;
                 if (ints[i] % 3 == 0) {
-                    mod3[j++] = ints[i];
+                    System.out.print(" " + ints[i]);
                 }
             }
-            return mod3;
-        }
-        public int[] divide5() {
-        int[] ints = new int[100];
-        int j = 0;
-        int[] mod5 = new int[ints.length / 5];
+            System.out.println("");
+            System.out.println("Делятся на 5: ");
             for (int i = 0; i < ints.length; i++) {
-            ints[i] = i + 1;
-            if (ints[i] % 5 == 0) {
-                mod5[j++] = ints[i];
+                ints[i] = i + 1;
+                if (ints[i] % 5 == 0) {
+                System.out.print(" " + ints[i]);
+                }
             }
-        }
-            return mod5;
-        }
-        public int[] divide15() {
-            int[] ints = new int[100];
-            int z = 0;
-            int[] mod15 = new int[ints.length / 15];
+            System.out.println("");
+            System.out.println("Делятся на 15: ");
             for (int i = 0; i < ints.length; i++) {
                 ints[i] = i + 1;
                 if (ints[i] % 15 == 0) {
-                    mod15[z++] = ints[i];
+                    System.out.print(" " + ints[i]);
                 }
             }
-            return mod15;
+            System.out.println("");
         }
     }
 
-    public static class xandyequalsz {
-        public boolean inf(int x, int y, int z) {
+    public static class CheckEquality {
+        public boolean OutResult(int x, int y, int z) {
             System.out.println("Введите первое число " + x);
             System.out.println("Введите второе число " + y);
             System.out.println("Введите третье число " + z);
@@ -122,8 +108,8 @@ public class lab4 {
         }
     }
 
-    public static class xlessylessz {
-        public boolean inf(int x, int y, int z) {
+    public static class CheckLess {
+        public boolean OutResult(int x, int y, int z) {
             System.out.println("Введите первое число " + x);
             System.out.println("Введите второе число " + y);
             System.out.println("Введите третье число " + z);
@@ -135,8 +121,8 @@ public class lab4 {
         }
     }
 
-    public static class hasmassive1or3on1orlast {
-        public boolean inf(int[] array) {
+    public static class FindElements {
+        public boolean OutResult(int[] array) {
             massiv array1 = new massiv();
             array = array1.in();
             boolean res = true;
@@ -152,8 +138,8 @@ public class lab4 {
         }
     }
 
-    public static class hasmassive1or3 {
-        public boolean inf(int[] array) {
+    public static class ContainsMassiv {
+        public boolean OutResult(int[] array) {
             massiv array1 = new massiv();
             array = array1.in();
             int j = 0;
@@ -170,8 +156,8 @@ public class lab4 {
         }
     }
 
-    public static class sortmassiv {
-        public void inf(int[] array) {
+    public static class SortMassiv {
+        public void OutSort(int[] array) {
             massiv array1 = new massiv();
             array = array1.in();
             int j = 0;
@@ -190,8 +176,8 @@ public class lab4 {
         }
     }
 
-    public static class entermassiv {
-        public int[] inf() {
+    public static class EnterMassiv {
+        public int[] OutMassiv() {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Array length ");
             int x = scanner.nextInt();
@@ -204,8 +190,8 @@ public class lab4 {
         }
     }
 
-    public static class firstchangetolast {
-        public int[] inf(int[] array) {
+    public static class ChangeElements {
+        public int[] OutMassiv(int[] array) {
             massiv array1 = new massiv();
             array = array1.in();
             int j = 0;
@@ -218,8 +204,8 @@ public class lab4 {
         }
     }
 
-    public static class uniquenum {
-        public int inf(int[] array) {
+    public static class UniqueNum {
+        public int OutNum(int[] array) {
             massiv array1 = new massiv();
             array = array1.in();
             Integer res = null, k = null;
@@ -259,4 +245,5 @@ public class lab4 {
             return array;
         }
     }
+
 }
