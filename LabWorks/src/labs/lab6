@@ -1,1 +1,206 @@
+package labs.lab6;
 
+import java.util.Scanner;
+import static java.lang.System.in;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Задание 1");
+        Human t1 = new Human("Иван", "Иванов");
+        t1.outall();
+        Client t12 = new Client("Антон", "Антонов", "Государственный банк");
+        t12.outall();
+        BankWorker t13 = new BankWorker("Сергей", "Сергеев", "Государственный банк");
+        t13.outall();
+        System.out.println("===================");
+        System.out.println("Задание 2");
+        Human1 t22 = new Client1();
+        t22.Initials("Антон", "Антонов");
+        Human1 t23 = new Bankworker1();
+        t23.Initials("Антон", "Антонов");
+        System.out.println("===================");
+        System.out.println("Задание 3");
+        Gruzovik gaz = new Gruzovik("Газ", 2000, 'b', 130, 2500, 4);
+        gaz.outPut();
+        gaz.ChangeNumofWheels(6);
+        gaz.outPut();
+        System.out.println("===================");
+        System.out.println("Задание 4");
+        ExtendedClass t4 = new ExtendedClass();
+        t4.output();
+        System.out.println("===================");
+        System.out.println("Задание 5");
+        DetailedUser t5 = new DetailedUser();
+        t5.getAge();
+    }
+
+    public static class Human {
+        protected String name;
+        protected String surname;
+
+        public Human(String name, String surname) {
+            this.name = name;
+            this.surname = surname;
+        }
+
+        public void outname() {
+            System.out.println("Имя: " + name);
+        }
+
+        public void outsurname() {
+            System.out.println("Фамилия: " + surname);
+        }
+
+        public void outall() {
+            System.out.println("Имя: " + name);
+            System.out.println("Фамилия: " + surname);
+        }
+    }
+
+    public static class Client extends Human {
+        private String Bankname;
+
+        public Client(String name, String surname, String Bankname) {
+            super(name, surname);
+            this.Bankname = Bankname;
+        }
+
+        public void outall() {
+            System.out.println("Имя: " + name);
+            System.out.println("Фамилия: " + surname);
+            System.out.println("Название банка: " + Bankname);
+        }
+    }
+
+    public static class BankWorker extends Human {
+        private String Bankname;
+
+        public BankWorker(String name, String surname, String Bankname) {
+            super(name, surname);
+            this.Bankname = Bankname;
+        }
+
+        public void outall() {
+            System.out.println("Имя: " + name);
+            System.out.println("Фамилия: " + surname);
+            System.out.println("Название банка: " + Bankname);
+
+        }
+    }
+
+    interface Human1 {
+        void Initials(String name, String surname);
+    }
+
+    static class Client1 implements Human1 {
+        protected String name;
+        protected String surname;
+
+        @Override
+        public void Initials(String name, String surname) {
+            System.out.println("Имя: " + name);
+            System.out.println("Фамилия: " + surname);
+        }
+    }
+
+    static class Bankworker1 implements Human1 {
+        protected String name;
+        protected String surname;
+
+        public void Initials(String name, String surname) {
+            System.out.println("Имя: " + name);
+            System.out.println("Фамилия: " + surname);
+        }
+    }
+
+    public static class Car {
+        public int weight;
+        public String model;
+        public char color;
+        public float speed;
+
+
+        public void outPut() {
+            System.out.println("Вес " + model + " составляет " + weight + "кг.");
+            System.out.println("Цвет машины - " + color + " и её скорость - " + speed);
+        }
+
+        public Car(String w, int m, char c, float s) {
+            weight = m;
+            model = w;
+            color = c;
+            speed = s;
+        }
+
+        public Car() {
+        }
+    }
+
+    static class Gruzovik extends Car {
+        private Integer Maxweight;
+        private Integer WheelsNum;
+
+        public Gruzovik(String w, int m, char c, float s, Integer Maxweight, Integer WheelsNum) {
+            super(w, m, c, s);
+            this.Maxweight = Maxweight;
+            this.WheelsNum = WheelsNum;
+        }
+
+        public void outPut() {
+            System.out.println("Вес " + model + " составляет " + weight + "кг.");
+            System.out.println("Цвет машины - " + color + " и её скорость - " + speed);
+            System.out.println("Максимальный вес - " + Maxweight + " и число колёс - " + WheelsNum);
+        }
+
+        public int ChangeNumofWheels(Integer newWheelsNum) {
+            this.WheelsNum = newWheelsNum;
+            return this.WheelsNum;
+        }
+    }
+
+    public static class MainClass {
+        protected int number;
+
+        public MainClass() {
+            Scanner in = new Scanner(System.in);
+            this.number = in.nextInt();
+        }
+
+        public int Number() {
+            return number;
+        }
+    }
+
+    public static class ExtendedClass extends MainClass {
+        public ExtendedClass() {
+            super();
+        }
+
+        public void output() {
+            int outnumber = Number();
+            System.out.println("Число: " + outnumber);
+        }
+
+    }
+
+    static class User {
+        protected static Scanner input = new Scanner(System.in);
+        protected int age;
+        public void getAge() {
+            System.out.print("Сколько вам лет? ");
+            age = input.nextInt();
+            System.out.println("Ваш возраст: " + age);
+        }
+    }
+    static class DetailedUser extends User {
+        private String name;
+        @Override
+        public void getAge() {
+            name = input.nextLine();
+            super.getAge();
+            System.out.println("Имя" + name);
+            System.out.println("Возраст" + age);
+        }
+
+    }
+}
